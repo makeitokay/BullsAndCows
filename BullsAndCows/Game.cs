@@ -13,10 +13,10 @@ namespace BullsAndCows
         private const string SeparatorSymbol = "=";
         
         // Количество разрядов в загаданном числе
-        private int _numberLength;
+        private readonly int _numberLength;
 
         // Хранить само число будем в виде массива символов - так его будет удобнее сравнивать.
-        private char[] _numberArray;
+        private readonly char[] _numberArray;
 
         // Лучший результат пользователя - минимальное время в секундах, за которое число было угадано.
         private long _bestSecondsResult = 0;
@@ -49,8 +49,7 @@ namespace BullsAndCows
             while (!userGuessArray.SequenceEqual(_numberArray))
             {
                 userGuessArray = GetUserGuess();
-                int bulls = 0;
-                int cows = 0;
+                int bulls = 0, cows = 0;
                 for (var i = 0; i < _numberLength; i++)
                 {
                     // Логика сравнения проста: если текущий элемент равен элементу с таким же индексом, это бык.
